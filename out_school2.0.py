@@ -5,6 +5,7 @@ import time
 ###########用户需要更改的部分###############
 your_name = '统一认证账号'
 your_pwd = '统一认证密码'
+wechat_key = '填入你的Server酱key'
 form_data = '复制的form_data'
 ###########用户需要更改的部分###############
 
