@@ -1,6 +1,43 @@
 # BUAAAutoUpdate
 北京航空航天大学自动填写”疫情防控通“的每日上报信息。
 ![Telegram](https://github.com/windiboy/BUAAAutoUpdate/blob/master/picture/logo.png)
+
+# 2020.08.14更新2.0版本
+## 新增功能
+- 新增了out_school2.0.py和in_school2.0.py
+- 舍弃了selenium，改用更方便的request库
+- 可以通过腾讯云函数实现代码托管，参考了这位[同学](https://github.com/kngkngtian/AutoReport)
+- 当然也可以只在本地运行，自动运行参考1.0说明文档
+
+## 实现原理
+- 获取每次提交时的源代码并记录，之后每天按照记录的源代码重复提交
+
+## 操作步骤
+### 获取需要提交的信息
+- 使用chrome浏览器，打开并登录[疫情防控通校外](https://app.buaa.edu.cn/ncov/wap/default/index)/[疫情防控通校内](https://app.buaa.edu.cn/site/ncov/xisudailyup)
+- 如果无法获取定位，可以参考[Chrome 自定位置](https://blog.csdn.net/u010844189/article/details/81163438)。
+- 校外同学：在页面中填好全部信息之后，打开`F12`控制台，输入`vm.save()`，然后查看`network`标签中的`save`项。点击后查看`Headers`标签，点击`Form Data`右侧的`view source`，复制备用。
+- 校内同学：在页面中填好全部信息之后，点击提交，然后查看`network`标签中的`save`项。点击后查看`Headers`标签，点击`Form Data`右侧的`view source`，复制备用。
+
+### 修改py脚本中的个人信息
+将个人账号密码、Server酱key和上面获取到的form_data替换掉对应的内容
+```bash
+your_name = '统一认证账号'
+your_pwd = '统一认证密码'
+wechat_key = '填入你的Server酱key'
+form_data = '复制的form_data'
+```
+
+### 新建云函数
+这里以腾讯云为例，进入[腾讯云函数页面](https://console.cloud.tencent.com/scf)，点击侧栏的`函数服务`，新建一个函数。
+函数名称随意，运行环境选择`python3.6`，创建方式选择`空白函数`即可，点击完成。
+选择`函数代码`标签，将修改完的python脚本代码替换掉原来的hello world代码，选择`保存并测试`。测试绿色表明成功同时会收到微信推送提示，失败的话请检查相关字符串是否正确。
+### 设置触发器
+选择左侧`触发管理`，创建一个新的触发器。选择`定时触发`，出发周期自定义，自己根据想要自动提交的时间输入Cron数据即可。推荐使用`0 1 0,8 * * * *`即可，该触发时间为每天的0:01和8:01，防止因为系统或某方面原因而失败。
+
+### Enjoy
+
+# 以下是1.0版本的内容
 ## 使用前提
 
 - 该脚本的工作方式为：通过ChromeDrive模拟打开填报页面，模拟鼠标点击**位置、选择温度**并提交
