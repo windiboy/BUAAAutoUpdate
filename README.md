@@ -3,6 +3,35 @@
 北京航空航天大学自动填写”疫情防控通“的每日上报信息。
 ![Telegram](https://github.com/windiboy/BUAAAutoUpdate/blob/master/picture/logo.png)
 
+# 2020.09.23更新新功能——累计每日晚检未打卡名单
+![Telegram](https://github.com/windiboy/BUAAAutoUpdate/blob/master/picture/daka.jpg)
+## 新增功能
+- 可以统计到目前为止未打卡名单
+- 使用pyplot做图
+- 推送到邮箱
+- **需要统一认证账号有查看未打卡名单的权限**
+## 操作步骤
+### 脚本依赖
+- Python 3.6 或以上
+- requests
+- openpyxl
+- matplotlib.pyplot
+### 修改py脚本中的个人信息
+```bash
+your_name = '统一认证账号'
+your_pwd = '统一认证密码'
+dir_name = 'C:\\Users\\xxx\\xxx\\xxx\\' #存放数据文件的地址 注意要使用绝对路径
+file_name = dir_name+time.strftime("%m-%d", time.localtime())
+dataBase_name = 'dateBase.xlsx'
+
+msg_from = 'xxx@qq.com'  # 发送方邮箱
+passwd = 'xxxxx'  # 填入发送方邮箱的授权码
+msg_to = 'xxxx@qq.com'  # 收件人邮箱
+```
+### 设计定时启动或手动运行
+- 运行后邮箱即可收到图片
+- dataBase.xlsx即为数据库文件
+
 # 2020.08.14更新2.0版本
 ## 新增功能
 - 新增了out_school2.0.py和in_school2.0.py
@@ -70,7 +99,7 @@ conda install selenium
 3. [安装ChromeDrive](https://chromedriver.chromium.org/downloads)，注意版本对应：如果您使用的是Chrome版本85，请下载ChromeDriver 85.0.4183.38
 - 需要将解压出来的chromedriver.exe分别放到**chrome浏览器的根目录和Anaconda对应虚拟环境的根目录**
 - 例如C:\Program Files (x86)\Google\Chrome\Application  D:\Anaconda\envs\web
-   
+  
 ## 将运行结果推送到微信上
 
 本脚本支持使用「[Server 酱](https://sc.ftqq.com/3.version)」将运行结果通过微信推送到手机上。
