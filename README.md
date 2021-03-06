@@ -4,7 +4,8 @@
 ![Telegram](https://github.com/windiboy/BUAAAutoUpdate/blob/master/picture/logo.png)
 
 # 2021.03.06 学校打卡系统升级，感谢@Leib-Niz更新的in_school13.0.py
-- 使用方法和以前一样，https://app.buaa.edu.cn/site/buaaStudentNcov/index，填好之后打开控制台Internet选项，提交后查看form并复制到脚本之中
+- 使用方法和以前一样，https://app.buaa.edu.cn/site/buaaStudentNcov/index
+- 填好之后打开控制台Internet选项，提交后查看form并复制到脚本之中
 
 # 2020.09.23更新新功能——累计每日晚检未打卡名单
 ![Telegram](https://github.com/windiboy/BUAAAutoUpdate/blob/master/picture/daka.jpg)
