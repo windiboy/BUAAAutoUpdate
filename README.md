@@ -3,7 +3,7 @@
 北京航空航天大学自动填写”疫情防控通“的每日上报信息。
 ![Telegram](https://github.com/windiboy/BUAAAutoUpdate/blob/master/picture/logo.png)
 
-# 2021.03.06 学校打卡系统升级，感谢@Leib-Niz更新的in_school13.0.py
+# 2021.03.06 学校打卡系统升级，感谢@Leib-Niz更新的in_school3.0.py
 - 使用方法和以前一样，https://app.buaa.edu.cn/site/buaaStudentNcov/index
 - 填好之后打开控制台Internet选项，提交后查看form并复制到脚本之中
 
