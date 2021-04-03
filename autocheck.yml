@@ -23,7 +23,7 @@ jobs:
         YOUR_PWD: ${{ secrets.YOUR_PWD }}
         TOKEN: ${{ secrets.TOKEN }}
         YOUR_NAME: ${{secrets.YOUR_NAME}}
-        CHAT_ID: ${{secret.CHAT_ID}}
-        WECHAT_KEY: ${{secret.WECHAT_KEY}}
+        CHAT_ID: ${{secrets.CHAT_ID}}
+        WECHAT_KEY: ${{secrets.WECHAT_KEY}}
         FORM: ${{secrets.FORM}}
       run: python checkv2.py
