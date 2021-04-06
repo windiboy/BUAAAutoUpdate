@@ -1,0 +1,29 @@
+name: autocheck
+
+on: 
+  schedule: 
+    - cron: '29 9,10 * * *'
+
+jobs: 
+  check: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: install requirement
+      run: |
+          python -m pip install --upgrade pip
+          pip install requests
+    - name: check
+      env: 
+        YOUR_PWD: ${{ secrets.YOUR_PWD }}
+        TOKEN: ${{ secrets.TOKEN }}
+        YOUR_NAME: ${{secrets.YOUR_NAME}}
+        CHAT_ID: ${{secrets.CHAT_ID}}
+        WECHAT_KEY: ${{secrets.WECHAT_KEY}}
+        FORM: ${{secrets.FORM}}
+      run: python checkv2.py
