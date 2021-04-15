@@ -1,8 +1,9 @@
 name: autocheck
 
-on: 
+on:
+  workflow_dispatch: # 手动触发
   schedule: 
-    - cron: '29 9,10 * * *'
+    - cron: '0 9 * * *' # 北京时间17点05分
 
 jobs: 
   check: 
