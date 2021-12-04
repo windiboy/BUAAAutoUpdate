@@ -6,6 +6,7 @@ import time
 your_name = ''
 your_pwd = ''
 wechat_key = ''
+bark_url = '' #可选 如果是iOS用户，可下载Bark APP，填入Bark中提供的url即可收到打卡结果的推送
 form_data = ''
 
 ###########用户需要更改的部分###############
@@ -13,6 +14,12 @@ form_data = ''
 def wechat_post(text):
     url = 'https://sc.ftqq.com/' + wechat_key + '.send?text='+text+time.strftime("%m-%d", time.localtime())
     requests.get(url)
+
+
+def bark_post(text):
+    if bark_url != '':
+        url = bark_url + text
+        requests.get(url)
 
 
 def buaaLogin(user_name, password):
@@ -47,5 +54,6 @@ def fillForm(res):
 def main_handler(event, context):
     result = fillForm(buaaLogin(your_name, your_pwd))
     wechat_post(result.text)
+    bark_post(result.text)
     return("DONE")
     
